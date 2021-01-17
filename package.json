@@ -1,0 +1,21 @@
+{
+  "name": "maxi-coffee",
+  "version": "1.0.0",
+  "description": "Personal blog",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "gray-matter": "^4.0.2",
+    "markdown-it": "^12.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
