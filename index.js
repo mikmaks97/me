@@ -27,6 +27,7 @@ app.get("/:post", (req, res) => {
     const file = matter.read(path.join(__dirname, "posts", `${req.params.post}.md`));
   } catch(err) {
     four_o_four(req, res);
+    return;
   }
 
   // use markdown-it to convert content to HTML

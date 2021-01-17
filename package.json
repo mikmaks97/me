@@ -2,6 +2,7 @@
   "name": "maxi-coffee",
   "version": "1.0.0",
   "description": "Personal blog",
+  "repository": "github:mikmak97/me",
   "main": "index.js",
   "dependencies": {
     "ejs": "^3.1.5",
