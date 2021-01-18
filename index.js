@@ -1,22 +1,28 @@
 const express = require("express");
+const compression = require('compression');
 const path = require("path");
 const matter = require("gray-matter");
 const md = require("markdown-it")();
 const fs = require("fs");
 const { four_o_four } = require("./utils");
+const log = require("./log");
 
 
 const port = 3000;
 const app = express();
 
-app.use(express.static("public"));
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(compression());
+app.use(express.static("public"));
+
 // logging middleware
 app.use((req, res, next) => {
-  console.log(new Date().toISOString(), req.method, req.url);
+  log.info(`${req.method} ${req.url}`);
+  res.on("finish", () => {
+    log.info(`${res.statusCode} ${req.method} ${req.url}`);
+  });
   next();
 });
 
@@ -43,6 +49,7 @@ app.get("/", (req, res) => {
   });
 });
 
+
 app.listen(port, function() {
-  console.log(`Server running at http://:${port}/`)
+  log.info(`Server running at http://:${port}/`)
 });
